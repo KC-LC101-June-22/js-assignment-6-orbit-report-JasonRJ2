@@ -9,8 +9,11 @@ import { Satellite } from '../satellite';
 export class OrbitCountsComponent implements OnInit {
 
 	@Input() satellites: Satellite[];
+	@Input() source: Satellite[];
 
-  constructor() { }
+
+  constructor() { 	
+  }
 
   ngOnInit() {
   }
@@ -27,5 +30,8 @@ export class OrbitCountsComponent implements OnInit {
 	return count;
  }
 
-
+ getUniqueTypes(): string[] {
+	let types = [... new Set(this.source.map(s => s.type))]
+	return types;
+ }
 }
